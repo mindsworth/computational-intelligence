@@ -1,5 +1,5 @@
 .App {
-  height: 100vh;
+  min-height: 100vh;
   padding: 2em;
 
   .container {
@@ -24,8 +24,6 @@
         display: flex;
 
         .plot-btn {
-          // width: 100%;
-
           margin: 0.3em;
           padding: 0 2em;
           font-size: 1.6rem;
@@ -33,6 +31,7 @@
           background-color: #0166ff;
           color: #ffffff;
           border: 0;
+          border-radius: 10px;
         }
       }
 
@@ -50,26 +49,28 @@
           border: 1px solid #0166ff;
         }
       }
-
-      .input-expression {
-        font-size: 2.5rem;
-
-        mjx-container[jax="SVG"][display="true"] {
-          text-align: left;
-          margin: 0.3em 0;
-        }
-      }
     }
 
     .content-container {
       padding: 1em 2em;
+
+      .input-expression {
+        display: flex;
+        align-items: center;
+
+        mjx-container[jax="SVG"][display="true"] {
+          font-size: 2rem;
+          text-align: left;
+          margin: 0.3em 1em;
+        }
+      }
 
       canvas {
         box-shadow: 1px 15px 30px rgba(0, 0, 0, 0.03);
         background-color: #fff;
         width: 100%;
         height: 45em;
-        margin-top: 2em;
+        margin-top: 1em 2em;
       }
     }
   }

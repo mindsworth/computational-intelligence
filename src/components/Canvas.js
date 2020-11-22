@@ -1,18 +1,11 @@
 import React, { useEffect, useRef } from "react";
 // import Math from 'mathjs'
-import { simplify, parse, evaluate } from "mathjs";
-import { evaluateExpression, transformExpression } from "../utils";
 
-function Canvas({ expression, ...rest }) {
+function Canvas({ isRendering, plotGraph, ...rest }) {
   //   console.log("expression :", expression);
   const canvasRef = useRef(null);
 
   useEffect(() => {
-    // const canvas = canvasRef.current;
-    // const ctx = canvas.getContext("2d");
-    // const h = canvas.height;
-    // const w = canvas.width;
-
     function Graph(config) {
       // user defined properties
       this.canvas = canvasRef.current;
@@ -168,6 +161,7 @@ function Canvas({ expression, ...rest }) {
 
     Graph.prototype.drawEquation = function (equation, color, thickness) {
       var context = this.context;
+      context.clearRect(0, 0, this.canvas.width, this.canvas.height);
       context.save();
       context.save();
       this.transformContext();
@@ -216,23 +210,6 @@ function Canvas({ expression, ...rest }) {
       unitsPerTick: 1,
     });
 
-    myGraph.drawEquation(
-      function (x) {
-        try {
-          const f = parse(expression);
-          const simplified = simplify(f);
-          console.log("x :", x, simplified.toString());
-          const result = simplified.evaluate({ x });
-          console.log("result :<<<<<=====>>>>>", result);
-          return result;
-        } catch (error) {
-          console.log("error :", error);
-        }
-      },
-      "green",
-      3
-    );
-
     // myGraph.drawEquation(
     //   function (x) {
     //     return x * x;
@@ -240,6 +217,7 @@ function Canvas({ expression, ...rest }) {
     //   "blue",
     //   3
     // );
+    plotGraph(myGraph);
 
     // myGraph.drawEquation(
     //   function (x) {
@@ -248,7 +226,7 @@ function Canvas({ expression, ...rest }) {
     //   "red",
     //   3
     // );
-  }, [expression]);
+  }, [isRendering, plotGraph]);
 
   return <canvas ref={canvasRef} {...rest} />;
 }
