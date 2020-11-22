@@ -22,7 +22,7 @@ function App() {
           </div>
         </div>
         <div className="content-container">
-          <Canvas width="1000" height="1000" expression={expression} />
+          <Canvas width="800" height="800" expression={expression} />
         </div>
       </div>
     </div>
