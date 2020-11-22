@@ -11,12 +11,15 @@ function App() {
       {/* <header className="App-header"></header> */}
       <div className="container">
         <div className="input-container">
-          <input
-            className="form-control"
-            type="text"
-            placeholder="Enter a mathematical expression"
-            onChange={(e) => setExpression(e.target.value)}
-          />
+          <div className="form-input-group">
+            <input
+              className="form-control"
+              type="text"
+              placeholder="Enter a mathematical expression"
+              onChange={(e) => setExpression(e.target.value)}
+            />
+            <button className="plot-btn">Plot graph</button>
+          </div>
           <div className="input-expression">
             <MathComponent tex={String.raw`${expression}`} />
           </div>

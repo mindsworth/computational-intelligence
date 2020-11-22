@@ -20,8 +20,26 @@
       box-shadow: 1px 15px 18px rgba(0, 0, 0, 0.03);
       margin-top: 2em;
 
+      .form-input-group {
+        display: flex;
+
+        .plot-btn {
+          // width: 100%;
+
+          margin: 0.3em;
+          padding: 0 2em;
+          font-size: 1.6rem;
+          cursor: pointer;
+          background-color: #0166ff;
+          color: #ffffff;
+          border: 0;
+        }
+      }
+
       .form-control {
-        width: 100%;
+        // width: 100%;
+        flex-grow: 1;
+        flex-shrink: 1;
         font-size: 1.8rem;
         padding: 1em;
         border-radius: 10px;
