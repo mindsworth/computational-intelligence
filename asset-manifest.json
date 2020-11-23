@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/computational-intelligence/static/css/main.94fc6ea7.chunk.css",
-    "main.js": "/computational-intelligence/static/js/main.9d743a0e.chunk.js",
-    "main.js.map": "/computational-intelligence/static/js/main.9d743a0e.chunk.js.map",
+    "main.js": "/computational-intelligence/static/js/main.60ad01b4.chunk.js",
+    "main.js.map": "/computational-intelligence/static/js/main.60ad01b4.chunk.js.map",
     "runtime-main.js": "/computational-intelligence/static/js/runtime-main.743f297c.js",
     "runtime-main.js.map": "/computational-intelligence/static/js/runtime-main.743f297c.js.map",
     "static/js/2.714a9c6f.chunk.js": "/computational-intelligence/static/js/2.714a9c6f.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.743f297c.js",
     "static/js/2.714a9c6f.chunk.js",
     "static/css/main.94fc6ea7.chunk.css",
-    "static/js/main.9d743a0e.chunk.js"
+    "static/js/main.60ad01b4.chunk.js"
   ]
 }
