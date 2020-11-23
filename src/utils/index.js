@@ -26,6 +26,38 @@ export function transformExpression(expr, variable) {
   return str;
 }
 
+// split expression by operator considering parentheses
+const split = (expression, operator) => {
+  // console.log("SPLIT");
+  const result = [];
+  let braces = 0;
+  let currentChunk = "";
+  for (let i = 0; i < expression.length; ++i) {
+    const curCh = expression[i];
+    // console.log("here ==>>>", curCh, currentChunk);
+    if (curCh === "(") {
+      braces++;
+      if (!isNaN(expression[i - 1])) {
+        currentChunk += "*";
+      }
+    } else if (curCh === ")") {
+      braces--;
+    }
+    if (braces === 0 && operator === curCh) {
+      result.push(currentChunk);
+      currentChunk = "";
+    } else currentChunk += curCh;
+  }
+  if (currentChunk !== "") {
+    result.push(currentChunk);
+  }
+
+  if (result[0].length === 0 && operator === "-") result[0] = "0";
+
+  console.log("result", result, expression);
+  return result;
+};
+
 // ^ / * -
 const parseMinusSeparatedExpression = (expression) => {
   console.log("MINUS");
