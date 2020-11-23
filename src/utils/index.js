@@ -58,6 +58,20 @@ const split = (expression, operator) => {
   return result;
 };
 
+// ^ / *
+const parseMultiplicationSeparatedExpression = (expression) => {
+  console.log("MULTIPLY");
+  const numbersString = split(expression, "*");
+
+  const numbers = numbersString.map((noStr) =>
+    parseDivisionSeparatedExpression(noStr)
+  );
+
+  const initialValue = 1.0;
+  const result = numbers.reduce((acc, no) => acc * no, initialValue);
+  return result;
+};
+
 // ^ / * -
 const parseMinusSeparatedExpression = (expression) => {
   console.log("MINUS");
