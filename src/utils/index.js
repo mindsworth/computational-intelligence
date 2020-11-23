@@ -58,6 +58,32 @@ const split = (expression, operator) => {
   return result;
 };
 
+// this will only take strings containing ^ operator [ no + ]
+const parsePowerSeparatedExpression = (expression) => {
+  console.log("POWER");
+  const numbersString = split(expression, "^");
+  const numbers = numbersString.map((noStr) => {
+    if (noStr[0] == "(") {
+      const expr = noStr.substr(1, noStr.length - 2);
+
+      console.log("LOG+noStr", noStr, expr, noStr.length - 2, noStr.length);
+      // recursive call to the main function
+      return parsePlusSeparatedExpression(expr);
+    }
+    console.log("noStr ====>>>>", noStr);
+    return +noStr;
+  });
+
+  // const numbers = numbersString.map(noStr => noStr);
+
+  const initialValue = numbers[0];
+  const result = numbers
+    .slice(1)
+    .reduce((acc, no) => Math.pow(acc, no), initialValue);
+  console.log("DIVISION result ====>>>>", result, numbers);
+  return result;
+};
+
 // both ^ /
 const parseDivisionSeparatedExpression = (expression) => {
   console.log("DIVISION");
