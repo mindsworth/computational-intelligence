@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/computational-intelligence/static/css/main.94fc6ea7.chunk.css",
+    "main.js": "/computational-intelligence/static/js/main.9d743a0e.chunk.js",
+    "main.js.map": "/computational-intelligence/static/js/main.9d743a0e.chunk.js.map",
+    "runtime-main.js": "/computational-intelligence/static/js/runtime-main.743f297c.js",
+    "runtime-main.js.map": "/computational-intelligence/static/js/runtime-main.743f297c.js.map",
+    "static/js/2.714a9c6f.chunk.js": "/computational-intelligence/static/js/2.714a9c6f.chunk.js",
+    "static/js/2.714a9c6f.chunk.js.map": "/computational-intelligence/static/js/2.714a9c6f.chunk.js.map",
+    "static/js/3.b6607034.chunk.js": "/computational-intelligence/static/js/3.b6607034.chunk.js",
+    "static/js/3.b6607034.chunk.js.map": "/computational-intelligence/static/js/3.b6607034.chunk.js.map",
+    "index.html": "/computational-intelligence/index.html",
+    "static/css/main.94fc6ea7.chunk.css.map": "/computational-intelligence/static/css/main.94fc6ea7.chunk.css.map",
+    "static/js/2.714a9c6f.chunk.js.LICENSE.txt": "/computational-intelligence/static/js/2.714a9c6f.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.743f297c.js",
+    "static/js/2.714a9c6f.chunk.js",
+    "static/css/main.94fc6ea7.chunk.css",
+    "static/js/main.9d743a0e.chunk.js"
+  ]
+}
