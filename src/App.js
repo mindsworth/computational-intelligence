@@ -5,6 +5,10 @@ import { evaluateExpression, transformExpression } from "./utils";
 import "./styles/App.scss";
 import Canvas from "./components/Canvas";
 
+// HE2PHVKJYA
+// const WolframAlphaAPI = require("wolfram-alpha-api");
+// const waApi = WolframAlphaAPI("RT4G4A-HE2PHVKJYA");
+
 function App() {
   const [expression, setExpression] = useState("3x^2");
   const [parseExpr, setParseExpr] = useState("");
@@ -12,6 +16,47 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
 
   console.log("expression :", expression);
+
+  // Example POST method implementation:
+  // async function postData(url = "", data = {}) {
+  //   // Default options are marked with *
+  //   const response = await fetch(url, {
+  //     mode: "no-cors",
+  //   });
+  //   console.log('response', response)
+  //   return response.json(); // parses JSON response into native JavaScript objects
+  // }
+
+  // postData("https://api.wolframalpha.com/v2/query?appid=RT4G4A-HE2PHVKJYA&input=sin%20x&output=json").then((data) => {
+  //   console.log(data); // JSON data parsed by `data.json()` call
+  // });
+
+  // waApi
+  //   .getFull("sin x", { mode: "no-cors" })
+  //   .then(console.log)
+  //   .catch(console.error);
+
+  // waApi
+  //   .getFull({
+  //     input: "sin(x)",
+  //     output: 'json',
+  //   })
+  //   .then((queryresult) => {
+  //     const pods = queryresult.pods;
+  //     const output = pods
+  //       .map((pod) => {
+  //         const subpodContent = pod.subpods
+  //           .map(
+  //             (subpod) =>
+  //               `  <img src="${subpod.img.src}" alt="${subpod.img.alt}">`
+  //           )
+  //           .join("\n");
+  //         return `<h2>${pod.title}</h2>\n${subpodContent}`;
+  //       })
+  //       .join("\n");
+  //     console.log(output);
+  //   })
+  //   .catch(console.error);
 
   const handlePlot = (x) => {
     setParseExpr(expression);
