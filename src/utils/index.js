@@ -26,10 +26,25 @@ export function transformExpression(expr, variable) {
   return str;
 }
 
+// ^ / * -
+const parseMinusSeparatedExpression = (expression) => {
+  console.log("MINUS");
+  const numbersString = split(expression, "-");
+  // const numbers = numbersString.map(noStr => noStr);
+  const numbers = numbersString.map((noStr) =>
+    parseMultiplicationSeparatedExpression(noStr)
+  );
+  console.log("MINUS=====numbers", numbers[0]);
+  const initialValue = numbers[0];
+  const result = numbers.slice(1).reduce((acc, no) => acc - no, initialValue);
+  console.log("MiNUS result", result, numbersString);
+  return result;
+};
+
 // ^ / * - +
 const parsePlusSeparatedExpression = (expression) => {
   console.log("PLUS");
-  const numbersString = expression.split(expression, "+");
+  const numbersString = split(expression, "+");
 
   // const numbers = numbersString.map(noStr => noStr);
   const numbers = numbersString.map((noStr) =>
