@@ -102,8 +102,39 @@ function App() {
 
   return (
     <div className="App">
-      {/* <header className="App-header"></header> */}
       <div className="container">
+        <div className="app-switch">
+          <label
+            htmlFor="native"
+            className={`switch-label ${
+              chooseComputation === "native" ? "active" : ""
+            }`}
+          >
+            <input
+              type="radio"
+              name="switch"
+              value="native"
+              id="native"
+              onChange={(e) => setChooseComputation(e.target.value)}
+            />
+            Native
+          </label>
+          <label
+            htmlFor="wolfram"
+            className={`switch-label ${
+              chooseComputation === "wolfram" ? "active" : ""
+            }`}
+          >
+            <input
+              type="radio"
+              name="switch"
+              value="wolfram"
+              id="wolfram"
+              onChange={(e) => setChooseComputation(e.target.value)}
+            />
+            Wolfram
+          </label>
+        </div>
         <div className="input-container">
           <div className="form-input-group">
             <input

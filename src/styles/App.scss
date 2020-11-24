@@ -13,6 +13,35 @@
     border: 1px solid #ececec;
     height: 100%;
 
+    .app-switch {
+      text-align: center;
+      padding: 1em;
+
+      input {
+        display: none;
+      }
+
+      .switch-label {
+        padding: 0.5em 1em;
+        background-color: rgba(236, 236, 236, 0.562);
+        cursor: pointer;
+        min-width: 15rem;
+        display: inline-block;
+        opacity: 0.3;
+        border: 1px solid #0166ff;
+
+        &:first-child {
+          border-right: 0;
+        }
+
+        &.active {
+          background-color: #0166ff;
+          color: #ffffff;
+          opacity: 1;
+        }
+      }
+    }
+
     .input-container {
       // background-color: #ffffff;
       // border: 1px solid #e4e2e2;
