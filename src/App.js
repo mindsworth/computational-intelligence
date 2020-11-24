@@ -14,7 +14,7 @@ function App() {
   const [parseExpr, setParseExpr] = useState("");
   const [myGraph, setMyGraph] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
-  const [chooseComputation, setChooseComputation] = useState("wolfram");
+  const [chooseComputation, setChooseComputation] = useState("native");
 
   console.log("expression :", expression);
 

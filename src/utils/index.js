@@ -70,7 +70,7 @@ const split = (expression, operator) => {
 
   if (result[0].length === 0 && operator === "-") result[0] = "0";
 
-  console.log("result", result, expression);
+//   console.log("result", result, expression);
   return result;
 };
 
@@ -93,15 +93,15 @@ const parsePowerSeparatedExpression = (expression) => {
 
   // const numbers = numbersString.map(noStr => noStr);
 
-  let initialValue;
+//   let initialValue;
 
-  if (Math.sign(numbers[0]) === -1) {
-    isNag = true;
-    initialValue = -numbers[0];
-  } else {
-    initialValue = numbers[0];
-  }
-  // const initialValue = numbers[0];
+//   if (Math.sign(numbers[0]) === -1) {
+//     isNag = true;
+//     initialValue = -numbers[0];
+//   } else {
+//     initialValue = numbers[0];
+//   }
+  const initialValue = numbers[0];
 
   let result = numbers
     .slice(1)
@@ -111,7 +111,7 @@ const parsePowerSeparatedExpression = (expression) => {
     result = -1 * result;
   }
 
-  console.log("POWER result ====>>>>", result, numbers);
+//   console.log("POWER result ====>>>>", result, numbers);
   return result;
 };
 
