@@ -21,7 +21,7 @@ export function transformExpression(expr, variable) {
   }
 
   const str = newExpr.replace(/x/g, variable);
-//   console.log("newExpr ===>>>>> TRANSFORM", str);
+  //   console.log("newExpr ===>>>>> TRANSFORM", str);
 
   return str;
 }
@@ -29,6 +29,9 @@ export function transformExpression(expr, variable) {
 // split expression by operator considering parentheses
 const split = (expression, operator) => {
   // console.log("SPLIT");
+  const operators = "()/*+-^";
+  const isNotOperator = (char) => operators.indexOf(char) === -1;
+
   const result = [];
   let braces = 0;
   let currentChunk = "";
@@ -43,30 +46,44 @@ const split = (expression, operator) => {
     } else if (curCh === ")") {
       braces--;
     }
+
     if (braces === 0 && operator === curCh) {
-      result.push(currentChunk);
-      currentChunk = "";
+      if (
+        operator === "-" &&
+        expression[i - 1].length !== 0 &&
+        isNotOperator(expression[i - 1])
+      ) {
+        result.push(currentChunk);
+        currentChunk = "";
+      } else if (operator !== "-") {
+        result.push(currentChunk);
+        currentChunk = "";
+      } else {
+        currentChunk += curCh;
+      }
     } else currentChunk += curCh;
   }
+
   if (currentChunk !== "") {
     result.push(currentChunk);
   }
 
   if (result[0].length === 0 && operator === "-") result[0] = "0";
 
-//   console.log("result", result, expression);
+  console.log("result", result, expression);
   return result;
 };
 
 // this will only take strings containing ^ operator [ no + ]
 const parsePowerSeparatedExpression = (expression) => {
-//   console.log("POWER");
+  //   console.log("POWER");
+  let isNag = false;
   const numbersString = split(expression, "^");
   const numbers = numbersString.map((noStr) => {
-    if (noStr[0] == "(") {
+    if (noStr[0] === "(") {
       const expr = noStr.substr(1, noStr.length - 2);
 
-    //   console.log("LOG+noStr", noStr, expr, noStr.length - 2, noStr.length);
+      //   console.log("LOG+noStr", noStr, expr, noStr.length - 2, noStr.length);
       // recursive call to the main function
       return parsePlusSeparatedExpression(expr);
     }
@@ -76,17 +93,31 @@ const parsePowerSeparatedExpression = (expression) => {
 
   // const numbers = numbersString.map(noStr => noStr);
 
-  const initialValue = numbers[0];
-  const result = numbers
+  let initialValue;
+
+  if (Math.sign(numbers[0]) === -1) {
+    isNag = true;
+    initialValue = -numbers[0];
+  } else {
+    initialValue = numbers[0];
+  }
+  // const initialValue = numbers[0];
+
+  let result = numbers
     .slice(1)
     .reduce((acc, no) => Math.pow(acc, no), initialValue);
-//   console.log("DIVISION result ====>>>>", result, numbers);
+
+  if (isNag) {
+    result = -1 * result;
+  }
+
+  console.log("POWER result ====>>>>", result, numbers);
   return result;
 };
 
 // both ^ /
 const parseDivisionSeparatedExpression = (expression) => {
-//   console.log("DIVISION");
+  //   console.log("DIVISION");
   const numbersString = split(expression, "/");
 
   const numbers = numbersString.map((noStr) =>
@@ -95,13 +126,13 @@ const parseDivisionSeparatedExpression = (expression) => {
 
   const initialValue = numbers[0];
   const result = numbers.slice(1).reduce((acc, no) => acc / no, initialValue);
-//   console.log("DIVISION result ====>>>>", result, numbers);
+  //   console.log("DIVISION result ====>>>>", result, numbers);
   return result;
 };
 
 // ^ / *
 const parseMultiplicationSeparatedExpression = (expression) => {
-//   console.log("MULTIPLY");
+  //   console.log("MULTIPLY");
   const numbersString = split(expression, "*");
 
   const numbers = numbersString.map((noStr) =>
@@ -115,22 +146,22 @@ const parseMultiplicationSeparatedExpression = (expression) => {
 
 // ^ / * -
 const parseMinusSeparatedExpression = (expression) => {
-//   console.log("MINUS");
+  //   console.log("MINUS");
   const numbersString = split(expression, "-");
   // const numbers = numbersString.map(noStr => noStr);
   const numbers = numbersString.map((noStr) =>
     parseMultiplicationSeparatedExpression(noStr)
   );
-//   console.log("MINUS=====numbers", numbers[0]);
+  //   console.log("MINUS=====numbers", numbers[0]);
   const initialValue = numbers[0];
   const result = numbers.slice(1).reduce((acc, no) => acc - no, initialValue);
-//   console.log("MiNUS result", result, numbersString);
+  //   console.log("MiNUS result", result, numbersString);
   return result;
 };
 
 // ^ / * - +
 const parsePlusSeparatedExpression = (expression) => {
-//   console.log("PLUS");
+  //   console.log("PLUS");
   const numbersString = split(expression, "+");
 
   // const numbers = numbersString.map(noStr => noStr);
@@ -139,7 +170,7 @@ const parsePlusSeparatedExpression = (expression) => {
   );
   const initialValue = 0.0;
   const result = numbers.reduce((acc, no) => acc + no, initialValue);
-//   console.log("RESULT=====numbers", result, numbers);
+  //   console.log("RESULT=====numbers", result, numbers);
   return result;
 };
 
